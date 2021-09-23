@@ -1,6 +1,19 @@
 <?php
     $groupCode = $useGroups ? $this->getGroupCodeFromIndex($indexValue) : '';
     $itemTitle = $useGroups ? $this->getGroupTitle($groupCode) : null;
+
+    $itemTitleFromField = $useGroups ? $this->getGroupTitleFromField($groupCode) : null;
+    
+    if ( $useGroups and $itemTitleFromField = $this->getGroupTitleFromField($groupCode) )
+    {
+        foreach ($widget->getFields() as $field)
+        {
+            if($field->fieldName == $itemTitleFromField)
+            {
+                $itemTitle = strtoupper($itemTitle) . ': ' . $field->value;
+            }
+        }
+    }
 ?>
 <li
     <?= $itemTitle ? 'data-collapse-title="'.e(trans($itemTitle)).'"' : '' ?>
