@@ -501,4 +501,14 @@ class Repeater extends FormWidgetBase
     {
         return array_get($this->groupDefinitions, $groupCode.'.name');
     }
+    
+    /**
+     * Returns the field name the title should be get from.
+     * @param $groupCode string
+     * @return string
+     */
+    public function getGroupTitleFromField($groupCode)
+    {
+        return array_get($this->groupDefinitions, $groupCode.'.titleFrom');
+    }
 }
